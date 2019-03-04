@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="novaji_brand_promotion" inherit_id="website.brand_promotion">
+        <xpath expr="//div[hasclass('o_brand_promotion')]" position="replace">
+            <div class="o_brand_promotion">
+                Powered by <a target="_blank" class="badge badge-danger" href="http://www.novajii.com">Novaji Introserve Limited</a>
+            </div>
+        </xpath>
+    </template>
+</odoo>

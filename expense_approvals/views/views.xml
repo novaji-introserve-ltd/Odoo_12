@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <record id="group_account_finance" model="res.groups">
+            <field name="name">Finance</field>
+            <field name="category_id" ref="base.module_category_accounting_and_finance"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="group_account_treasury" model="res.groups">
+            <field name="name">Chief Financial Officer</field>
+            <field name="category_id" ref="base.module_category_accounting_and_finance"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <!-- Inherit the sale order model's form view and customize -->
+        <record id="view_hr_expense_sheet_form_approval" model="ir.ui.view">
+            <field name="name">hr.expense.sheet.form.approval</field>
+            <field name="model">hr.expense.sheet</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+            <field name="priority">1000</field>
+            <field name="arch" type="xml">
+                <xpath expr="/form/header" position="replace">
+                    <header>
+                        <button name="approved_by_finance" states="submit" string="Approved by Finance" type="object" groups="expense_approvals.group_account_finance" class="oe_highlight o_expense_sheet_approve"/>
+                        <button name="approved_by_treasury" states="finance" string="Approved" type="object" groups="expense_approvals.group_account_treasury" class="oe_highlight o_expense_sheet_approve"/>
+                        <button name="action_sheet_move_create" states="approve" string="Post Journal Entries" type="object" groups="account.group_account_user" class="oe_highlight o_expense_sheet_post"/>
+                        <button name="%(hr_expense.hr_expense_register_payment_wizard_action)d" type="action" string="Register Payment" class="oe_highlight o_expense_sheet_pay" attrs="{'invisible': [('state', '!=', 'post')]}" context="{'default_amount': total_amount, 'partner_id': address_id}" groups="account.group_account_user"/>
+                        <button name="reset_expense_sheets" states="cancel" string="Resubmit" type="object"/>
+                        <button name="%(hr_expense.hr_expense_refuse_wizard_action)d" states="submit" string="Refuse" type="action" groups="hr_expense.group_hr_expense_user" />
+                        <button name="%(hr_expense.hr_expense_refuse_wizard_action)d" states="approve" string="Refuse" type="action" groups="account.group_account_user"/>
+                        <button name="%(hr_expense.hr_expense_refuse_wizard_action)d" states="finance" string="Refuse" type="action" groups="account.group_account_user"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submit,finance,approve,post,done"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

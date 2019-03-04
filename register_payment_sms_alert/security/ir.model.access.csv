@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rams_property_phase_manager,rams_property.phase.manager,rams_property.model_property_phase,account.group_account_user,1,1,1,1
+access_rams_property_type_manager,rams_property.type.manager,rams_property.model_property_type,account.group_account_user,1,1,1,1
+access_rams_property_size_manager,rams_property.size.manager,rams_property.model_property_size,account.group_account_user,1,1,1,1
+access_rams_property_status_manager,rams_property.status.manager,rams_property.model_property_status,account.group_account_user,1,1,1,1

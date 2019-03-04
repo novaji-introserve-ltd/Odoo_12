@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+    <delete model="hr.salary.rule" search="[('id','=',ref('hr_payroll.hr_rule_basic'))]"/>
+    <delete model="hr.salary.rule" search="[('id','=',ref('hr_payroll.hr_rule_net'))]"/>
+    <delete model="hr.salary.rule" search="[('id','=',ref('hr_payroll.hr_rule_taxable'))]"/>
+    -->
+    <data noupdate="1">        
+        <record id="COMM" model="hr.salary.rule.category">
+            <field name="name">Commission</field>
+            <field name="code">COMM</field>
+        </record>
+        <record id="TRA" model="hr.salary.rule.category">
+            <field name="name">Transportation</field>
+            <field name="code">TRA</field>
+        </record>
+        <record id="HSG" model="hr.salary.rule.category">
+            <field name="name">Housing</field>
+            <field name="code">HSG</field>
+        </record>
+        <record id="BONUS" model="hr.salary.rule.category">
+            <field name="name">Bonus</field>
+            <field name="code">BONUS</field>
+        </record>
+       <!--
+        <record id="hr_payroll.hr_rule_basic" model="hr.salary.rule">
+            <field name="name">Basic</field>
+            <field name="sequence" eval="1"/>
+            <field name="code">BASIC</field>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.wage * 0.15</field>
+        </record>
+        
+        <record id="hr_payroll.hr_rule_taxable" model="hr.salary.rule">
+            <field name="name">Gross</field>
+            <field name="sequence" eval="100"/>
+            <field name="code">GROSS</field>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASIC + categories.HSG + categories.TRA + categories.ALW</field>
+        </record>
+     
+        <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
+            <field name="name">Net</field>
+            <field name="sequence" eval="200"/>
+            <field name="code">NET</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.wage + categories.BONUS + categories.DED</field>
+            <field name="register_id" ref="contrib_register_employees"/>
+        </record>
+        -->
+        <record id="hr_rule_paye" model="hr.salary.rule">
+            <field name="name">P.A.Y.E</field>
+            <field name="sequence" eval="100"/>
+            <field name="code">PAYE</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.env['hr.payslip'].calculate_paye(contract.wage,categories.BASIC,categories.TRA,categories.HSG)</field>
+        </record>
+        <record id="hr_rule_nhf" model="hr.salary.rule">
+            <field name="name">N.H.F</field>
+            <field name="sequence" eval="100"/>
+            <field name="code">NHF</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASIC * 0.25 * (-1)</field>
+        </record>
+        <record id="hr_rule_pension" model="hr.salary.rule">
+            <field name="name">Pension</field>
+            <field name="sequence" eval="100"/>
+            <field name="code">PF</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (categories.BASIC + categories.TRA + categories.HSG)  * -0.08</field>
+        </record>
+    </data>
+</odoo>

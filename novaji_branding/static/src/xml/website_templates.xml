@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+      <template inherit_id="website.layout" name="Custom Footer Copyright">
+        <xpath expr="//footer" position="inside">
+            <div class="container mt16 mb8">
+                <div class="pull-right" t-ignore="true" t-if="not editable">
+                    Create a website
+                </div>
+                <div class="pull-left text-muted" itemscope="itemscope" itemtype="http://schema.org/Organization">
+                    Copyright &amp;copy; <span t-field="res_company.name" itemprop="name">Company name</span>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    -->
+</odoo>

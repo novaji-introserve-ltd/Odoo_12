@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_novaji_payroll_novaji_payroll,novaji_payroll.novaji_payroll,model_novaji_payroll_novaji_payroll,,1,0,0,0

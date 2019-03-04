@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+        <record id="novaji_bulk_sms_username" model="ir.config_parameter">
+            <field name="key">novaji_bulk_sms_username</field>
+            <field name="value">novaji</field>
+        </record>
+        <record id="novaji_bulk_sms_password" model="ir.config_parameter">
+            <field name="key">novaji_bulk_sms_password</field>
+            <field name="value">novaji</field>
+        </record>
+        <record id="novaji_bulk_sms_sender" model="ir.config_parameter">
+            <field name="key">novaji_bulk_sms_sender</field>
+            <field name="value">novaji</field>
+        </record>
+         <record id="novaji_bulk_sms_message" model="ir.config_parameter">
+            <field name="key">novaji_bulk_sms_message</field>
+            <field name="value">Payment Confirmation. Amount:NGN{amount}. Customer: {name}</field>
+        </record>
+    </data>
+</openerp>

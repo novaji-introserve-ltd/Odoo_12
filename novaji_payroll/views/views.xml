@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="novaji_payroll.list">
+      <field name="name">novaji_payroll list</field>
+      <field name="model">novaji_payroll.novaji_payroll</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="novaji_payroll.action_window">
+      <field name="name">novaji_payroll window</field>
+      <field name="res_model">novaji_payroll.novaji_payroll</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="novaji_payroll.action_server">
+      <field name="name">novaji_payroll server</field>
+      <field name="model_id" ref="model_novaji_payroll_novaji_payroll"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="novaji_payroll" id="novaji_payroll.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="novaji_payroll.menu_1" parent="novaji_payroll.menu_root"/>
+    <menuitem name="Menu 2" id="novaji_payroll.menu_2" parent="novaji_payroll.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="novaji_payroll.menu_1_list" parent="novaji_payroll.menu_1"
+              action="novaji_payroll.action_window"/>
+    <menuitem name="Server to list" id="novaji_payroll" parent="novaji_payroll.menu_2"
+              action="novaji_payroll.action_server"/>
+    -->
+  </data>
+</odoo>
